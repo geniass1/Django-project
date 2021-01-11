@@ -1,8 +1,14 @@
 {% extends 'main/base.html' %}
 
 {% block title %}
-Lox
+{{ title }}
 {% endblock %}
 {% block main %}
-Otchislen
+<h3>Main page</h3>
+{% for el in tasks%}
+    <div class="alert alert-warning mt-2">
+        <h3>{{el.title}}</h3>
+        <p>{{el.task}}</p>
+    </div>
+{% endfor %}
 {% endblock %}

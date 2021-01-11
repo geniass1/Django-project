@@ -9,12 +9,11 @@
     <title>{% block title %}{% endblock%}</title>
 </head>
 <body>
-        <header class="site-header sticky-top py-1">
-  <nav class="container d-flex flex-column flex-md-row justify-content-between">
-    <a class="py-2" href="#" aria-label="Product">
-    <a class="py-2 d-none d-md-inline-block" href="{% url 'main' %}">Main</a>
-    <a class="py-2 d-none d-md-inline-block" href="{% url 'second' %}">Second</a>
-    <a class="py-2 d-none d-md-inline-block" href="#">Features</a>
+<header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <p class="h5 my-0 me-md-auto fw-normal">Geniass INC</p>
+  <nav class="my-2 my-md-0 me-md-3">
+    <a class="p-2 text-dark" href="{% url 'main' %}" >Main</a>
+    <a class="p-2 text-dark" href="{% url 'create' %}">Create</a>
   </nav>
 </header>
     {% block main %}{% endblock%}
