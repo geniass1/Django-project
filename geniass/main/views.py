@@ -8,6 +8,11 @@ def index(request):
     return render(request, 'main/index.html', {'title': 'Lol', 'tasks': tasks})
 
 
+def task_id(request, id):
+    task = Task.objects.get(id=id)
+    return render(request, 'main/task.html', {'task': task})
+
+
 def create(request):
     if request.method == 'POST':
         form = TaskForm(request.POST)
@@ -19,3 +24,8 @@ def create(request):
     }
     return render(request, 'main/create.html', context)
 
+
+def delete(request, id):
+    obj = Task.objects.get(id=id)
+    obj.delete()
+    return redirect('/')

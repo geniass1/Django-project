@@ -1,0 +1,13 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+lox
+{% endblock %}
+{% block main %}
+<h3>NOT Main page</h3>
+    <div class="alert alert-warning mt-2">
+        <h3>{{task.title}}</h3>
+        <p>{{task.task}}</p>
+        <a href="/delete/{{task.id}}/" class = "btn btn-danger">Delete</a>
+    </div>
+{% endblock %}
