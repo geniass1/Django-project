@@ -1,11 +1,11 @@
-from .models import Task
-from django.forms import ModelForm, TextInput
+from .models import Product
+from django.forms import ModelForm, TextInput, IntegerField
 
 
-class TaskForm(ModelForm):
+class ProductForm(ModelForm):
     class Meta:
-        model = Task
-        fields = ["title", "task"]
+        model = Product
+        fields = ["title", "task", "price"]
         widgets = {
             "title": TextInput(attrs={
             'class': 'form-control'
@@ -13,4 +13,7 @@ class TaskForm(ModelForm):
             "task": TextInput(attrs={
             'class': 'form-control'
         }),
-    }
+            "price": TextInput(attrs={
+            'class': 'form-control'
+        })
+        }

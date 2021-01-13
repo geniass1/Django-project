@@ -1,24 +1,27 @@
 from django.shortcuts import render, redirect
-from .models import Task
-from .forms import TaskForm
+from .models import Product
+from .forms import ProductForm
 
 
 def index(request):
-    tasks = Task.objects.order_by('-id')
+    if len(request.GET)==0  or request.GET['a'] == '2':
+        tasks = Product.objects.order_by('-id')
+    else:
+        tasks = Product.objects.order_by('-price')
     return render(request, 'main/index.html', {'title': 'Lol', 'tasks': tasks})
 
 
 def task_id(request, id):
-    task = Task.objects.get(id=id)
+    task = Product.objects.get(id=id)
     return render(request, 'main/task.html', {'task': task})
 
 
 def create(request):
     if request.method == 'POST':
-        form = TaskForm(request.POST)
+        form = ProductForm(request.POST)
         form.save()
         return redirect('/')
-    form = TaskForm()
+    form = ProductForm()
     context = {
         'form': form
     }
@@ -26,6 +29,6 @@ def create(request):
 
 
 def delete(request, id):
-    obj = Task.objects.get(id=id)
+    obj = Product.objects.get(id=id)
     obj.delete()
     return redirect('/')

@@ -5,10 +5,13 @@
 {% endblock %}
 {% block main %}
 <h3>Main page</h3>
+<a href="/?a=1" class = "btn btn-warning">By Price</a>
+<a href="/?a=2" class = "btn btn-warning">By Date</a>
 {% for el in tasks%}
     <div class="alert alert-warning mt-2">
         <h3>{{el.title}}</h3>
-        <p>{{el.task}}</p>
+        <p>About:{{el.task}}</p>
+        <p>Price:{{el.price}}</p>
         <a href="task/{{el.id}}/" class = "btn btn-warning">Details</a>
     </div>
 {% endfor %}
