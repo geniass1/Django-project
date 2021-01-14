@@ -5,8 +5,8 @@
 {% endblock %}
 {% block main %}
 <h3>Main page</h3>
-<a href="/?a=1" class = "btn btn-warning">By Price</a>
-<a href="/?a=2" class = "btn btn-warning">By Date</a>
+<a href="{{ index_by_price }}" class = "btn btn-warning">By Price</a>
+<a href="{{ index_by_date }}" class = "btn btn-warning">By Date</a>
 {% for el in tasks%}
     <div class="alert alert-warning mt-2">
         <h3>{{el.title}}</h3>

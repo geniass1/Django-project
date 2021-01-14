@@ -14,6 +14,10 @@
   <nav class="my-2 my-md-0 me-md-3">
     <a class="p-2 text-dark" href="{% url 'main' %}" >Main</a>
     <a class="p-2 text-dark" href="{% url 'create' %}">Create</a>
+       <form class="add_your_class" method="GET">
+        <input class="add_your_class" type="search" name="search" value="{{ search }}">
+        <button class="add_your_class" type="submit"> Search </button>
+        </form>
   </nav>
 </header>
     {% block main %}{% endblock%}
