@@ -18,6 +18,8 @@
         <input class="add_your_class" type="search" name="search" value="{{ search }}">
         <button class="add_your_class" type="submit"> Search </button>
         </form>
+      <p>Hello {{request.user}}</p>
+      <a class="p-2 text-dark" href="{% url 'logout' %}">Logout</a>
   </nav>
 </header>
     {% block main %}{% endblock%}
