@@ -12,14 +12,14 @@
 <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
   <p class="h5 my-0 me-md-auto fw-normal">Geniass INC</p>
   <nav class="my-2 my-md-0 me-md-3">
-    <a class="p-2 text-dark" href="{% url 'main' %}" >Main</a>
-    <a class="p-2 text-dark" href="{% url 'create' %}">Create</a>
+    <a class="p-2 text-dark" href="{% url 'main:main' %}" >Main</a>
+    <a class="p-2 text-dark" href="{% url 'main:create' %}">Create</a>
        <form class="add_your_class" method="GET">
         <input class="add_your_class" type="search" name="search" value="{{ search }}">
         <button class="add_your_class" type="submit"> Search </button>
         </form>
       <p>Hello {{request.user}}</p>
-      <a class="p-2 text-dark" href="{% url 'logout' %}">Logout</a>
+      <a class="p-2 text-dark" href="{% url 'user:logout' %}">Logout</a>
   </nav>
 </header>
     {% block main %}{% endblock%}
