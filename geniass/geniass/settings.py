@@ -71,6 +71,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'geniass.wsgi.application'
 
+AUTH_USER_MODEL = 'user.NewUser'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -114,7 +115,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
