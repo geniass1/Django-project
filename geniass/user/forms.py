@@ -13,4 +13,3 @@ class CreateUserForm(ModelForm):
     def save(self):
         self.instance.set_password(self.instance.password)
         super().save()
-

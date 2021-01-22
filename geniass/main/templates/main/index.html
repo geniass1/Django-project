@@ -4,6 +4,13 @@
 {{ title }}
 {% endblock %}
 {% block main %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
 <h3>Main page</h3>
 <a href="{{ index_by_price }}" class = "btn btn-warning">By Price</a>
 <a href="{{ index_by_date }}" class = "btn btn-warning">By Date</a>
@@ -13,6 +20,7 @@
         <p>About:{{el.task}}</p>
         <p>Price:{{el.price}}</p>
         <a href="task/{{el.id}}/" class = "btn btn-warning">Details</a>
+        <a href="shopping_cart/add_to_cart/{{el.id}}/" class = "btn btn-warning">Add to cart</a>
     </div>
 {% endfor %}
 {% endblock %}
