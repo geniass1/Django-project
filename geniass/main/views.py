@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Product
+from cart.models import Order
 from .forms import ProductForm
 from django.contrib.auth.decorators import login_required
 
@@ -8,19 +9,24 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     if request.GET.get('search'):
         search = request.GET.get('search')
-        index_by_date = f'/?a=2&search={search}'
-        index_by_price = f'/?a=1&search={search}'
+        index_by_date = f'/?a=1&search={search}'
+        index_by_price = f'/?a=2&search={search}'
         tasks = Product.objects.all().filter(title=search)
     else:
         search = ""
-        index_by_date = '/?a=2'
-        index_by_price = '/?a=1'
+        index_by_date = '/?a=1'
+        index_by_price = '/?a=2'
         tasks = Product.objects.order_by('-price')
     if 'a' not in request.GET or len(request.GET) == 0 or request.GET['a'] == '2':
         tasks = tasks.order_by('-price')
     elif request.GET['a'] == '1':
         tasks = tasks.order_by('-id')
-    return render(request, 'main/index.html', {'title': 'Lol', 'tasks': tasks, 'index_by_date': index_by_date,'index_by_price': index_by_price,'search':search})
+    order = Order.objects.filter(owner=request.user, is_ordered=False)
+    current_orders = [product.product for product in order[0].items.all()]
+    # breakpoint()
+    return render(request, 'main/index.html', {'title': 'Lol', 'tasks': tasks, 'index_by_date': index_by_date,
+                                               'index_by_price': index_by_price,
+                                               'search':search,'current_orders':current_orders})
 
 
 @login_required(login_url='user.views.login')
