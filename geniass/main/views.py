@@ -26,9 +26,11 @@ def index(request):
         current_orders = [product.product for product in order[0].items.all()]
     except:
         current_orders = []
-    return render(request, 'main/index.html', {'title': 'Lol', 'tasks': tasks, 'index_by_date': index_by_date,
+    paid_orders = request.user.catalog.all()
+    return render(request, 'main/index.html', {'tasks': tasks, 'index_by_date': index_by_date,
                                                'index_by_price': index_by_price,
-                                               'search':search,'current_orders':current_orders})
+                                               'search':search,'current_orders':current_orders,
+                                               'paid_orders':paid_orders})
 
 
 @login_required(login_url='user.views.login')

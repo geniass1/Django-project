@@ -21,7 +21,9 @@
         <p>About:{{el.task}}</p>
         <p>Price:{{el.price}}</p>
         <a href="task/{{el.id}}/" class = "btn btn-warning">Details</a>
-        {% if el not in current_orders %}
+        {% if el in paid_orders %}
+        You own this
+        {% elif el not in current_orders %}
         <a href="shopping_cart/add_to_cart/{{el.id}}/" class = "btn btn-warning">Add to cart</a>
         {% else %}
         <a href="shopping_cart/check_cart" class = "btn btn-warning">Go to cart</a>

@@ -16,7 +16,11 @@ def add_to_cart(request, id):
 
 
 def check_cart(request):
-    order = Order.objects.get(owner=request.user)
+    # breakpoint()
+    if len(Order.objects.all()) != 0:
+        order = Order.objects.get(owner=request.user)
+    else:
+        order = []
     return render(request, 'cart/cart.html', {'order': order})
 
 
@@ -31,8 +35,8 @@ def checkout(request):
     order = Order.objects.get(owner=request.user)
     if request.method == 'POST':
         current_orders = [product.product for product in order.items.all()]
-        for i in current_orders:
-            request.user.catalog.add(i)
+        request.user.catalog.add(*current_orders)
+        Order.objects.all().delete()
         return redirect('cart:paid_orders')
     return render(request, 'cart/checkout.html', {'order': order})
 
