@@ -11,6 +11,7 @@
     {% endfor %}
 </ul>
 {% endif %}
+<form class="container">
 <h3>Main page</h3>
 <a href="{{ index_by_price }}" class = "btn btn-warning">By Price</a>
 <a href="{{ index_by_date }}" class = "btn btn-warning">By Date</a>
@@ -27,4 +28,5 @@
         {% endif %}
     </div>
 {% endfor %}
+    </form>
 {% endblock %}

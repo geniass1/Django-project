@@ -1,0 +1,10 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Lox
+{% endblock %}
+{% block main %}
+    {% for i in catalog %}
+        {{i}}
+    {% endfor %}
+{% endblock %}

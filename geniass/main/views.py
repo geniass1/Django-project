@@ -22,8 +22,10 @@ def index(request):
     elif request.GET['a'] == '1':
         tasks = tasks.order_by('-id')
     order = Order.objects.filter(owner=request.user, is_ordered=False)
-    current_orders = [product.product for product in order[0].items.all()]
-    # breakpoint()
+    try:
+        current_orders = [product.product for product in order[0].items.all()]
+    except:
+        current_orders = []
     return render(request, 'main/index.html', {'title': 'Lol', 'tasks': tasks, 'index_by_date': index_by_date,
                                                'index_by_price': index_by_price,
                                                'search':search,'current_orders':current_orders})
