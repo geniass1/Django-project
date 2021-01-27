@@ -26,11 +26,16 @@ def index(request):
         current_orders = [product.product for product in order[0].items.all()]
     except:
         current_orders = []
-    paid_orders = request.user.catalog.all()
+    catalog = request.user.catalog.all()
+    current_catalog = []
+    for i in catalog:
+        for l, k in enumerate(list(i.orders.all())):
+            current_catalog.append(k.product)
+    # breakpoint()
     return render(request, 'main/index.html', {'tasks': tasks, 'index_by_date': index_by_date,
                                                'index_by_price': index_by_price,
                                                'search':search,'current_orders':current_orders,
-                                               'paid_orders':paid_orders})
+                                               'paid_orders':current_catalog})
 
 
 @login_required(login_url='user.views.login')

@@ -1,6 +1,5 @@
 from django.db import models
 from main.models import Product
-from user.models import NewUser
 
 
 class OrderItem(models.Model):
@@ -11,7 +10,7 @@ class OrderItem(models.Model):
 
 
 class Order(models.Model):
-    owner = models.ForeignKey(NewUser, on_delete=models.SET_NULL, null=True)
+    owner = models.ForeignKey('user.NewUser', on_delete=models.SET_NULL, null=True)
     is_ordered = models.BooleanField(default=False)
     items = models.ManyToManyField(OrderItem)
     date_ordered = models.DateTimeField(auto_now=True)
@@ -23,3 +22,7 @@ class Order(models.Model):
         return sum([item.product.price for item in self.items.all()])
 
 
+class PaidOrder(models.Model):
+    orders = models.ManyToManyField(OrderItem)
+    current_product = models.ManyToManyField(Product)
+    date_ordered = models.DateTimeField(auto_now=True)
