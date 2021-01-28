@@ -4,12 +4,11 @@
 Lox
 {% endblock %}
 {% block main %}
-<form method="post" class="container">
+<form method="post" class="container" enctype="multipart/form-data">
     <h3>Add something</h3>
     {% csrf_token %}
-    {{ form.title}}
-    {{ form.task}}
-    {{ form.price}}
+    {{ form.as_p }}
+    {{ form.media }}
     <button type="submit" class="btn btn-success">Send</button>
 </form>
 {% endblock %}

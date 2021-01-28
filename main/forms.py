@@ -5,7 +5,7 @@ from django.forms import ModelForm, TextInput
 class ProductForm(ModelForm):
     class Meta:
         model = Product
-        fields = ["title", "task", "price"]
+        fields = ["title", "task", "price", "image"]
         widgets = {
             "title": TextInput(attrs={
             'class': 'form-control'
@@ -17,3 +17,6 @@ class ProductForm(ModelForm):
             'class': 'form-control'
         })
         }
+
+
+

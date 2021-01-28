@@ -20,7 +20,13 @@ Lox
               </a>
             </span>
           </td>
-            <td>{{i.orders.all}}</td>
+            <td>
+                {% for l in i.orders.all %}
+                <span>
+                    {{l.product.title}}
+                </span>
+                {% endfor %}
+            </td>
         </tr>
         {% endfor %}
 {% endblock %}

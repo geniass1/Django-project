@@ -47,7 +47,7 @@ def task_id(request, id):
 @login_required(login_url='user.views.login')
 def create(request):
     if request.method == 'POST':
-        form = ProductForm(request.POST)
+        form = ProductForm(request.POST,request.FILES)
         form.save()
         return redirect('/')
     form = ProductForm()

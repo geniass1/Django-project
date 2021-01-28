@@ -1,5 +1,6 @@
 from django.db import models
 from main.models import Product
+from django.contrib.postgres.fields import ArrayField
 
 
 class OrderItem(models.Model):
@@ -24,5 +25,4 @@ class Order(models.Model):
 
 class PaidOrder(models.Model):
     orders = models.ManyToManyField(OrderItem)
-    current_product = models.ManyToManyField(Product)
     date_ordered = models.DateTimeField(auto_now=True)

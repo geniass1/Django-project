@@ -34,7 +34,6 @@ def checkout(request):
     order = Order.objects.get(owner=request.user)
     if request.method == 'POST':
         paid_orders = PaidOrder.objects.create()
-        # breakpoint()
         idx = 0
         while idx != len(order.items.all()):
             paid_orders.orders.add(order.items.all()[idx])
@@ -48,11 +47,4 @@ def checkout(request):
 def paid_orders(request):
     catalog = request.user.catalog.all()
     catalog = catalog.order_by('-id')
-    # idx = 0
-    # while idx != len(catalog):
-    #     prom = []
-    #     for i in catalog[idx].orders.all():
-    #         prom.append(i.product.title)
-    #     current_products.append(prom)
-    #     idx += 1
     return render(request, 'cart/paid_orders.html', {'catalog': list(catalog)})
