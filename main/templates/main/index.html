@@ -12,24 +12,24 @@
 </ul>
 {% endif %}
 <form>
-<a href="{{ index_by_price }}" class = "btn btn-warning">By Price</a>
-<a href="{{ index_by_date }}" class = "btn btn-warning">By Date</a>
+<a href="{{ index_by_price }}" class="btn btn-outline-dark">By Price</a>
+<a href="{{ index_by_date }}" class="btn btn-outline-dark">By Date</a>
     </form>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray;bg-white border-bottom shadow-sm">
 <div class="row">
 {% for el in tasks%}
      <div class="col-sm-3">
          <div class="container">
         <h3>{{el.title}}</h3>
-        <p>About:{{el.task}}</p>
+             <img src="/media/{{el.image}}" style="max-width:200px;max-height:200px">
         <p>Price:{{el.price}}</p>
-             <img src="/media/{{el.image}}" style="max-width:10%;max-height:10%">
-        <a href="task/{{el.id}}/" class = "btn btn-warning">Details</a>
+        <a href="task/{{el.id}}/" class="btn btn-dark">Details</a>
         {% if el in paid_orders %}
         You own this
         {% elif el not in current_orders %}
-        <a href="shopping_cart/add_to_cart/{{el.id}}/" class = "btn btn-warning">Add to cart</a>
+        <a href="shopping_cart/add_to_cart/{{el.id}}/" class="btn btn-dark">Add to cart</a>
         {% else %}
-        <a href="shopping_cart/check_cart" class = "btn btn-warning">Go to cart</a>
+        <a href="shopping_cart/check_cart" class="btn btn-dark">Go to cart</a>
         {% endif %}
          </div>
          </div>
