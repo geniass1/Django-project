@@ -7,7 +7,13 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='user:login')
 def index(request):
-    if request.GET.get('search'):
+    if request.GET.get('category'):
+        search = ""
+        categ = request.GET.get('category')
+        index_by_date = f'/?a=1&category={categ}'
+        index_by_price = f'/?a=2&category={categ}'
+        tasks = Product.objects.all().filter(category=request.GET.get('category'))
+    elif request.GET.get('search'):
         search = request.GET.get('search')
         index_by_date = f'/?a=1&search={search}'
         index_by_price = f'/?a=2&search={search}'

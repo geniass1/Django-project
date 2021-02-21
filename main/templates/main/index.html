@@ -23,6 +23,11 @@
         <h3>{{el.title}}</h3>
              <img src="/media/{{el.image}}" style="max-width:200px;max-height:200px">
         <p>Price:{{el.price}}</p>
+             <div>
+                 <form method="get">
+                <button class="btn btn-info" type="submit" name="category" value="{{el.category}}">{{el.category}}</button>
+                 </form>
+             </div>
         <a href="task/{{el.id}}/" class="btn btn-dark">Details</a>
         {% if el in paid_orders %}
         You own this
